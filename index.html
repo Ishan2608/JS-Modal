@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Practice</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #modal-opener{
+            padding: 5px 10px;
+            font-size: 1.5rem;
+        }
+
+        #modal-opener:hover{
+            cursor: pointer;
+            background-color: #101010;
+            color: rgb(219, 217, 217);
+        }
+
+        .modal-bg.show{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.877);
+            z-index: 90;
+        }
+
+        .modal{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(219, 217, 217);
+            color: #101010;
+            box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.582);
+            padding: 30px 10px;
+            width: 60%;
+            max-width: 60%;
+            border-radius: 5px;
+            z-index: 100;
+            display: none;
+        }
+
+        .modal.show{
+            display: block;
+        }
+        
+        .modal .modal-heading{
+            text-align: center;
+            font-size: 3rem;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+
+        .modal .modal-para{
+            width: 90%;
+            margin: auto;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .modal #close-btn{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: crimson;
+            color: white;
+            font-weight: bolder;
+            font-size: 1.1rem;
+            padding: 2px;
+            border: none;
+            border-radius: 3px;
+        }
+        
+        .modal #close-btn:hover{
+            cursor: pointer;
+            border: none;
+            background-color: rgb(158, 14, 42);
+        }
+    </style>
+</head>
+<body>
+    <div class="modal-bg"></div>
+    <div class="modal">
+        <button id="close-btn">X</button>
+        <h1 class="modal-heading">Welcome to Modal Project</h1>
+        <p class="modal-para">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat atque eos ullam perferendis voluptates obcaecati quidem dolorum sapiente voluptatum. Ipsam voluptatem et aliquam, perferendis magni in nihil! Quod, odio velit?
+        </p>
+    </div>
+
+    <button id="modal-opener">Open Modal</button>
+
+    <script>
+        const open_btn = document.querySelector('#modal-opener');
+        const close_btn = document.querySelector('#close-btn')
+        const bg = document.querySelector('.modal-bg');
+        const modal = document.querySelector('.modal')
+
+        open_btn.addEventListener('click', ()=>{
+            modal.classList.add('show');
+            bg.classList.add('show')
+        })
+        
+        close_btn.addEventListener('click', remove_modal)
+        bg.addEventListener('click', remove_modal)
+
+
+        function remove_modal(){
+            modal.classList.remove('show');
+            bg.classList.remove('show')
+        }
+
+    </script>
+</body>
+</html>
